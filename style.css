@@ -1,9 +1,11 @@
 :root {
-    --Lineargradient_activeinputborder: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+    --Lineargradient_activeinputborder1: hsl(249, 99%, 64%);
+    --Lineargradient_activeinputborder2: hsl(278, 94%, 30%);
     --Red_inputerrors: hsl(0, 100%, 66%);
     --Lightgrayishviolet: hsl(270, 3%, 87%);
     --Darkgrayishviolet: hsl(279, 6%, 55%);
     --Verydarkviolet: hsl(278, 68%, 11%);
+    --border-color: hsla(270, 3%, 87%, 0.5);
 }
 
 *, *::before, *::after {
@@ -27,14 +29,14 @@ body {
 }
 
 section {
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
 }
 
 .banner {
     background: url(/images/bg-main-mobile.png);
     color: white;
     font-size: 1rem;
-    height: 230px;
+    height: 220px;
 }
 
 .card-front {
@@ -45,7 +47,7 @@ section {
     padding: 1rem;
     font-size: .85rem;
     position: absolute;
-    top: 7rem;
+    top: 7.2rem;
     height: 147px;
     width: 268.2px;
 }
@@ -62,11 +64,44 @@ section {
     right: 1rem;
 }
 
-h1 {
-    font-weight: 100;
+#cardLogo {
+    width: 50px;
 }
 
-h2 {
+#cardInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: large;
+    letter-spacing: 1.5px;
+    padding: 2rem 0 0 0;
+    margin: 0;
+}
+
+#cardInfo h2{
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 1rem 0 0 0;
+    margin: 0;
+    color: var(--Lightgrayishviolet);
+}
+
+h3 {
+    font-size: .8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding-top: 1rem;
+    color: var(--Darkgrayishviolet);
+}
+
+#cvv {
     font-size: .65rem;
     display: flex;
     justify-content: end;
@@ -77,8 +112,68 @@ h2 {
     padding-right: 2rem;
     margin-top: 0.25rem;
 }
-.details {
+
+#details-form {
+    display: block; /* block */
     margin-top: 2rem;
+}
+
+.success {
+    display: none;     /* none */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.success h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.success h2 {
+    font-size: 1.15rem;
+    color: var(--Darkgrayishviolet);
+}
+
+.button {
+    color: white;
+    background-color: var(--Verydarkviolet);
+    border-radius: 10px;
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.dateAndCVC, .dateInput {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.cvcCode, .date {
+    width: 50%;
+}
+
+input {
+    width: 100%;
+    height: 3rem;
+    border-radius: 7px;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    padding-left: 1rem;
+    border: 1px solid var(--Lightgrayishviolet);
+}
+
+::placeholder {
+    color: var(--Darkgrayishviolet);
+    opacity: 0.5;
 }
 @media screen and (min-width: 376px) {
     body {
