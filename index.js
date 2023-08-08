@@ -18,7 +18,7 @@ const expDate = document.getElementById("expDate");
 const cvv = document.getElementById("cvv");
 
 const form = document.getElementById("details-form");
-const success = document.getElementById("success")
+const success = document.getElementById("success");
 
 function size () {
     let h = window.innerHeight;
