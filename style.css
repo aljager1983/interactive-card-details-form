@@ -191,6 +191,8 @@ input {
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        gap: 1.5rem;
     }
 
     .card-front, .card-back  {
@@ -201,18 +203,19 @@ input {
          top: 0px;
          right: 0;
          height: 200px;
-         width: 320px;
+         width: 350px;
          background-size: contain;
     }
 
     .card-front {
-        left: 100px;
+        left: 15vw;
 
     }
 
    .card-back {
         margin-left: calc(33vw - 1.5rem - 160px);
         left: 0;
+        padding-right: 1rem;
     }
 
     main {
@@ -221,7 +224,7 @@ input {
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 10rem 20vw;
+        padding: 10vh 20vw;
     }
 
     main section {
@@ -230,15 +233,15 @@ input {
     }
 
     #cvv {
-        font-size: .65rem;
+        font-size: .75rem;
         display: flex;
         justify-content: end;
-        align-items: center;
+        align-items: baseline;
         width: 100%;
         color: white;
         font-weight: 200;
         padding-right: 2rem;
-        margin-top: 0.25rem;
+        margin-top: 0rem;
     }
 
     #details-form {
