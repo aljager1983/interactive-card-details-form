@@ -32,14 +32,14 @@ section {
 }
 
 .banner {
-    background: url(/images/bg-main-mobile.png);
+    background: url(images/bg-main-mobile.png);
     color: white;
     font-size: 1rem;
     height: 220px;
 }
 
 .card-front {
-    background: url(/images/bgfront.png);
+    background: url(images/bgfront.png);
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 1;
@@ -54,7 +54,7 @@ section {
 .card-back {
     display: flex;
     align-items: center;
-    background: url(/images/bg-card-back.png);
+    background: url(images/bg-card-back.png);
     background-size: contain;
     background-repeat: no-repeat;
     height: 147px;
@@ -180,7 +180,7 @@ input {
     }
 
     .banner {
-        background: url(/images/bg-main-desktop.png);
+        background: url(images/bg-main-desktop.png);
         background-repeat: no-repeat;
         background-size: cover;
         
