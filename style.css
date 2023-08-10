@@ -192,7 +192,7 @@ input {
         flex-direction: column;
         justify-content: center;
 
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .card-front, .card-back  {
@@ -202,18 +202,20 @@ input {
          z-index: 0;
          top: 0px;
          right: 0;
-         height: 200px;
-         width: 350px;
+         height: 225px;
+         width: 400px;
          background-size: contain;
     }
 
     .card-front {
-        left: 15vw;
-
+        left: 0;
+        /* margin-left: 10vw; */
+        margin-left: clamp(5vw, 200%, 12vw);
+        padding: 2rem;
     }
 
    .card-back {
-        margin-left: calc(33vw - 1.5rem - 160px);
+        margin-left: calc(33vw - 1.5rem - 210px);
         left: 0;
         padding-right: 1rem;
     }
@@ -224,7 +226,7 @@ input {
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 10vh 20vw;
+        padding: 10vh 22vw;
     }
 
     main section {
@@ -234,11 +236,6 @@ input {
 
     #cvv {
         font-size: .75rem;
-        display: flex;
-        justify-content: end;
-        align-items: baseline;
-        width: 100%;
-        color: white;
         font-weight: 200;
         padding-right: 2rem;
         margin-top: 0rem;
@@ -248,4 +245,60 @@ input {
         margin: 0;
     }
    
+    #cardLogo {
+        width: 70px;
+    }
+
+    h1 {
+        font-weight: 100;
+        font-size: 1.5rem;
+        letter-spacing: 3.5px;
+        padding: 2rem 0 0 0;
+        margin-top: 1rem;
+    }
+
+    #cardInfo h2{
+        font-size: 0.85rem;
+        letter-spacing: 3.5px;
+        font-weight: 500;
+        text-transform: uppercase;
+        padding: 1.45rem 0 0 0;
+        margin: 0;
+        color: var(--Lightgrayishviolet);
+    }
+
+   
+    h3 {
+        font-size: 0.65rem;
+    }
+
+    input {
+        height: 2.5rem;
+    }
+
+    .button {
+        padding: 0.85rem 0;
+        font-size: 0.85rem;
+    }
+    
 }
+
+@media screen and (min-width: 1910px) {
+    .card-front, .card-back  {
+        height: 250px;
+        width: 430px;
+   }
+
+   .card-front {
+    left: 0;
+    /* margin-left: 10vw; */
+    margin-left: 15vw;
+    padding: 2rem;
+    }
+
+    h1 {
+        padding: 3rem 0 0 0;
+        font-size: 1.65rem;
+    }
+
+ }
