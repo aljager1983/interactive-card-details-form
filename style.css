@@ -39,7 +39,7 @@ section {
 }
 
 .card-front {
-    background: url(/images/bg-card-front.png);
+    background: url(/images/bgfront.png);
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 1;
@@ -210,7 +210,7 @@ input {
     .card-front {
         left: 0;
         /* margin-left: 10vw; */
-        margin-left: clamp(5vw, 200%, 12vw);
+        margin-left: clamp(5vw, 200%, 10vw);
         padding: 2rem;
     }
 
