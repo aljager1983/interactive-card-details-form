@@ -22,7 +22,7 @@
       <h1 id="cardNumPreview">0000 0000 0000 0000</h1>
         <div id="cardInfo">
           <h2 id="name">Jane Appleseed</h2>
-          <h2 id=expDate>00/00</h2>
+          <h2 id="expDate"><span id="monthPrev">00</span>/<span id="yearPrev">00</span></h2>
         </div>
     </div>
     <div class="card-back">
@@ -34,10 +34,10 @@
 <main>
 <section id="details-form" >
   <h3>Cardholder Name</h3>
-  <input type="text" id="cardName" placeholder="e.g. Jane Appleseed" />
+  <input type="text" id="cardName" placeholder="e.g. Jane Appleseed" onkeyup="updateName()"/>
 
   <h3>Card Number</h3>
-  <input type="text" id="cardNumber" placeholder="e.g. 1234 5678 9123 0000"> 
+  <input type="text" id="cardNumber" placeholder="e.g. 1234 5678 9123 0000" /> 
 
   <div class="dateAndCVC">
     <div class="date">
