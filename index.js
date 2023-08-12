@@ -19,6 +19,12 @@ const cvv = document.getElementById("cvv");
 const monthPrev = document.getElementById("monthPrev");
 const yearPrev = document.getElementById("yearPrev");
 
+//err msgs
+const emptyNameMsg = document.getElementById("emptyNameMsg");
+const emptyNumMsg = document.getElementById("emptyNumMsg");
+const emptyDate = document.getElementById("emptyDate");
+const emptycvc = document.getElementById("emptycvc");
+
 const form = document.getElementById("details-form");
 const success = document.getElementById("success");
 
@@ -30,15 +36,39 @@ function size () {
 
 //submit button
 confButton.addEventListener("click", function() {
-    form.style.display = "none";
-    success.style.display = "flex";
-    // cname.innerHTML = cardName.value;
-    // cardNumPreview.innerHTML = cardNumber.value;
-    expDate.innerHTML = month.value + "/" + year.value;
-    cvv.innerHTML = cvc.value;
+    if(cardName.value == "") {
+        console.log("blank name");
+        emptyNameMsg.innerHTML = "Can't be blank";
+        return;
+    } else {
+        emptyNameMsg.innerHTML = "";
+    }
+    
+    if(cardNumber.value == ""){
+        emptyNumMsg.innerHTML = "Can't be blank";
+        return;
+    } else {
+        emptyNumMsg.innerHTML = "";
+    }
+
+    if(month.value == "" || year.value == "") {
+    emptyDate.innerHTML = "Can't be blank";
+    return;
+    } else {
+        emptyDate.innerHTML = "";
+    }
+    
+    if(cvc.value == ""){
+        emptycvc.innerHTML = "Can't be blank";
+        return;
+    } else {
+        emptycvc.innerHTML = "";
+    }
+
+    confirmSuccess();
+
 })
 
-// cardNumPreview.innerHTML = arr.join("");
 //continue /  resets page
 contButton.addEventListener("click", function() {
     location.reload();
@@ -51,6 +81,7 @@ function updateName() {
 
 cardNumber.addEventListener("keyup", function() {
     const cardNumPrevMatch = cardNumber.value;
+    //adding spaces every 4 chars
     const updatePrevNum = cardNumPrevMatch.match(/.{1,4}/g);
     cardNumPreview.innerHTML = updatePrevNum.join(" ");
 
@@ -73,3 +104,12 @@ year.addEventListener("keyup", function() {
 cvc.addEventListener("keyup", function() {
     cvv.innerHTML = cvc.value;
 })
+
+function confirmSuccess() {
+    form.style.display = "none";
+    success.style.display = "flex";
+    // cname.innerHTML = cardName.value;
+    // cardNumPreview.innerHTML = cardNumber.value;
+    expDate.innerHTML = month.value + "/" + year.value;
+    cvv.innerHTML = cvc.value;
+}
