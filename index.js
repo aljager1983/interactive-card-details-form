@@ -24,6 +24,7 @@ const emptyNameMsg = document.getElementById("emptyNameMsg");
 const emptyNumMsg = document.getElementById("emptyNumMsg");
 const emptyDate = document.getElementById("emptyDate");
 const emptycvc = document.getElementById("emptycvc");
+const regExp = /[a-zA-z]/g;
 
 const form = document.getElementById("details-form");
 const success = document.getElementById("success");
@@ -37,45 +38,64 @@ const success = document.getElementById("success");
 //submit button
 confButton.addEventListener("click", function() {
 
-    if(cardName.value == "" && cardNumPreview.value == "" &&
-    cvc.value == "" && month.value == "" && year.value == "") {
-        emptyNameMsg.innerHTML = "Can't be blank";
-        emptyNumMsg.innerHTML = "Can't be blank";
+        if(cardName.value == "") {
+            emptyNameMsg.innerHTML = "Can't be blank";
+            cardName.style.borderColor = "red";
+            
+        } else {
+            emptyNameMsg.innerHTML = "";
+            cardName.style.borderColor = "hsl(270, 3%, 87%)";
+        }
+        
+        if(cardNumber.value == ""){
+            emptyNumMsg.innerHTML = "Can't be blank";
+            cardNumber.style.borderColor = "red";
+        } else if(regExp.test(cardNumber.value) ) {
+            emptyNumMsg.innerHTML = "Wrong format, Numbers only";
+            cardNumber.style.borderColor = "red";
+            
+        } else {
+            emptyNumMsg.innerHTML = "";
+            cardNumber.style.borderColor = "hsl(270, 3%, 87%)";
+        }
+    
+        if(month.value == "" && year.value == "") {
         emptyDate.innerHTML = "Can't be blank";
-        emptycvc.innerHTML = "Can't be blank";
-        return;
-    } else {
+        month.style.borderColor = "red";
+        year.style.borderColor = "red";
+        } else if(year.value !="" && month.value == "") {
+            emptyDate.innerHTML = "Can't be blank";
+            year.style.borderColor = "hsl(270, 3%, 87%)";
+            month.style.borderColor = "red";
+            
+        } else if(year.value =="" && month.value != "") {
+            emptyDate.innerHTML = "Can't be blank";
+            year.style.borderColor = "red";
+            month.style.borderColor = "hsl(270, 3%, 87%)";
+            
+        }else {
+            emptyDate.innerHTML = "";
+            month.style.borderColor = "hsl(270, 3%, 87%)";
+            year.style.borderColor = "hsl(270, 3%, 87%)";
+        }
+        
+        if(cvc.value == ""){
+            emptycvc.innerHTML = "Can't be blank";
+            cvc.style.borderColor = "red";
+            
+        } else {
+            emptycvc.innerHTML = "";
+            cvc.style.borderColor = "hsl(270, 3%, 87%)";
+        }
 
-    if(cardName.value == "") {
-        emptyNameMsg.innerHTML = "Can't be blank";
-        return;
-    } else {
-        emptyNameMsg.innerHTML = "";
-    }
-    
-    if(cardNumber.value == ""){
-        emptyNumMsg.innerHTML = "Can't be blank";
-        return;
-    } else {
-        emptyNumMsg.innerHTML = "";
-    }
-
-    if(month.value == "" || year.value == "") {
-    emptyDate.innerHTML = "Can't be blank";
-    return;
-    } else {
-        emptyDate.innerHTML = "";
-    }
-    
-    if(cvc.value == ""){
-        emptycvc.innerHTML = "Can't be blank";
-        return;
-    } else {
-        emptycvc.innerHTML = "";
-    }
-
-    confirmSuccess();
-}
+        if(cardName.value != "" && cardNumber.value != "" && month.value !="" && year.value != "" && cvc.value != "") 
+        {
+            console.log(true);
+            confirmSuccess();
+        } else {
+            console.log(false);
+            return;
+        }
 
 })
 
@@ -99,7 +119,6 @@ cardNumber.addEventListener("keyup", function() {
     if(cardNumber.value.length > 15) {
         cardNumber.value = cardNumber.value.slice(0, 15)
     }
-   console.log(cardNumber.value.length);
 })
 
 month.addEventListener("keyup", function() {
@@ -118,8 +137,7 @@ cvc.addEventListener("keyup", function() {
 function confirmSuccess() {
     form.style.display = "none";
     success.style.display = "flex";
-    // cname.innerHTML = cardName.value;
-    // cardNumPreview.innerHTML = cardNumber.value;
     expDate.innerHTML = month.value + "/" + year.value;
     cvv.innerHTML = cvc.value;
 }
+

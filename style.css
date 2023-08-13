@@ -170,6 +170,10 @@ input {
     border: 1px solid var(--Lightgrayishviolet);
 }
 
+input:hover {
+    cursor: pointer;
+    border-color: var(--Lineargradient_activeinputborder1);
+}
 ::placeholder {
     color: var(--Darkgrayishviolet);
     opacity: 0.5;
