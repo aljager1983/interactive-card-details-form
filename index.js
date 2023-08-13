@@ -1,4 +1,4 @@
-const scrSize = document.getElementById("wh");
+// const scrSize = document.getElementById("wh");
 
 // buttons (confirm)
 const contButton = document.getElementById("continue");
@@ -28,16 +28,25 @@ const emptycvc = document.getElementById("emptycvc");
 const form = document.getElementById("details-form");
 const success = document.getElementById("success");
 
-function size () {
-    let h = window.innerHeight;
-    let w = window.innerWidth;
-    scrSize.innerHTML = w + "x" + h + " wxh";
-}
+// function size () {
+//     let h = window.innerHeight;
+//     let w = window.innerWidth;
+//     scrSize.innerHTML = w + "x" + h + " wxh";
+// }
 
 //submit button
 confButton.addEventListener("click", function() {
+
+    if(cardName.value == "" && cardNumPreview.value == "" &&
+    cvc.value == "" && month.value == "" && year.value == "") {
+        emptyNameMsg.innerHTML = "Can't be blank";
+        emptyNumMsg.innerHTML = "Can't be blank";
+        emptyDate.innerHTML = "Can't be blank";
+        emptycvc.innerHTML = "Can't be blank";
+        return;
+    } else {
+
     if(cardName.value == "") {
-        console.log("blank name");
         emptyNameMsg.innerHTML = "Can't be blank";
         return;
     } else {
@@ -66,6 +75,7 @@ confButton.addEventListener("click", function() {
     }
 
     confirmSuccess();
+}
 
 })
 
