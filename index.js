@@ -90,6 +90,30 @@ confButton.addEventListener("click", function() {
         //     emptyDate.innerHTML = "Wrong format,Numbers only";
         //     year.style.borderColor = "red";
         //     console.log("error");
+        } else if(month.value != "" && year.value != "") {
+            if(month.value.match(regExp) && year.value.match(regExp)) {
+                emptyDate.innerHTML = "";
+                month.style.borderColor = "hsl(270, 3%, 87%)";
+                year.style.borderColor = "hsl(270, 3%, 87%)";
+                
+            } else  if(!month.value.match(regExp) && !year.value.match(regExp)) {
+                emptyDate.innerHTML = "Wrong format,Numbers only";
+                month.style.borderColor = "red";
+                year.style.borderColor = "red";
+
+            } else  if(!month.value.match(regExp)) {
+                    emptyDate.innerHTML = "Wrong format,Numbers only";
+                    month.style.borderColor = "red";
+                    year.style.borderColor = "hsl(270, 3%, 87%)";
+
+            } else if(!year.value.match(regExp)) {
+                emptyDate.innerHTML = "Wrong format,Numbers only";
+                year.style.borderColor = "red";
+                month.style.borderColor = "hsl(270, 3%, 87%)";
+            }
+                    
+                
+
         } else {
             emptyDate.innerHTML = "";
             month.style.borderColor = "hsl(270, 3%, 87%)";
@@ -97,22 +121,10 @@ confButton.addEventListener("click", function() {
         }
 
 
-        if(month.value.match(regExp) && year.value.match(regExp) ){
-            emptyDate.innerHTML = "";
-            month.style.borderColor = "hsl(270, 3%, 87%)";
-            year.style.borderColor = "hsl(270, 3%, 87%)";
+       
+       
+
         
-        // else  if(month.value.match(regExp)) {
-        //     emptyDate.innerHTML = "";
-        //     month.style.borderColor = "hsl(270, 3%, 87%)";
-        // }else if(year.value.match(regExp)) {
-        //     emptyDate.innerHTML = "";
-        //     year.style.borderColor = "hsl(270, 3%, 87%)";
-        console.log("month and year is valid")
-        } else {
-            console.log("false = still error")
-        }
-
         if(cvc.value == ""){
             emptycvc.innerHTML = "Can't be blank";
             cvc.style.borderColor = "red";
