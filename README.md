@@ -35,7 +35,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github solution repo](https://github.com/aljager1983/interactive-details-form)
-- Live Site URL: [Frontend Mentor | Notifications page](https://aljager1983.github.io/notifications-page/)
+- Live Site URL: [Frontend Mentor | Notifications page](https://aljager1983.github.io/interactive-details-form/)
 
 ## My process
 
