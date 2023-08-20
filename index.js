@@ -28,9 +28,12 @@ const regExp = /^[0-9]+$/;
 
 const form = document.getElementById("details-form");
 const success = document.getElementById("success");
+const validColor = "hsl(270, 3%, 87%)";
+const errorColor = "hsl(0, 100%, 66%)";
+const wrongFormatMsg = "Wrong format, Numbers only";
 
 // function size () {
-//     let h = window.innerHeight;
+//     let h = window.innerHeight;H
 //     let w = window.innerWidth;
 //     scrSize.innerHTML = w + "x" + h + " wxh";
 // }
@@ -40,102 +43,90 @@ confButton.addEventListener("click", function() {
 
         if(cardName.value == "") {
             emptyNameMsg.innerHTML = "Can't be blank";
-            cardName.style.borderColor = "red";
+            cardName.style.borderColor = errorColor;
             
         } else {
             emptyNameMsg.innerHTML = "";
-            cardName.style.borderColor = "hsl(270, 3%, 87%)";
+            cardName.style.borderColor = validColor;
         }
         
         if(cardNumber.value == ""){
             emptyNumMsg.innerHTML = "Can't be blank";
-            cardNumber.style.borderColor = "red";
+            cardNumber.style.borderColor = errorColor;
         } else if(cardNumber.value.match(regExp)) {
             emptyNumMsg.innerHTML = "";
-            cardNumber.style.borderColor = "hsl(270, 3%, 87%)";
+            cardNumber.style.borderColor = validColor;
         } else {
-            emptyNumMsg.innerHTML = "Wrong format, Numbers only";
-            cardNumber.style.borderColor = "red";
+            emptyNumMsg.innerHTML = wrongFormatMsg;
+            cardNumber.style.borderColor = errorColor;
             
         }
     
         if(month.value == "" && year.value == "") {
         emptyDate.innerHTML = "Can't be blank";
-        month.style.borderColor = "red";
-        year.style.borderColor = "red";
+        month.style.borderColor = errorColor;
+        year.style.borderColor = errorColor;
         } else if(year.value !="" && month.value == "") {
             emptyDate.innerHTML = "Can't be blank";
-            year.style.borderColor = "hsl(270, 3%, 87%)";
-            month.style.borderColor = "red";
+            year.style.borderColor = validColor;
+            month.style.borderColor = errorColor;
             
         } else if(year.value =="" && month.value != "") {
             emptyDate.innerHTML = "Can't be blank";
-            year.style.borderColor = "red";
-            month.style.borderColor = "hsl(270, 3%, 87%)";
+            year.style.borderColor = errorColor;
+            month.style.borderColor = validColor;
         
         //date format checker 
-        
-
-        
-        // } else if(regExp.test(month.value) && regExp.test(year.value)) {
-        //     emptyDate.innerHTML = "Wrong format, Numbers only";
-        //     month.style.borderColor = "red";
-        //     year.style.borderColor = "red";
-        
-        
-        // } else if(regExp.test(month.value)) {
-        //     emptyDate.innerHTML = "Wrong format,Numbers only";
-        //     month.style.borderColor = "red";
-        // }else if(regExp.test(year.value)) {
-        //     emptyDate.innerHTML = "Wrong format,Numbers only";
-        //     year.style.borderColor = "red";
-        //     console.log("error");
         } else if(month.value != "" && year.value != "") {
             if(month.value.match(regExp) && year.value.match(regExp)) {
                 emptyDate.innerHTML = "";
-                month.style.borderColor = "hsl(270, 3%, 87%)";
-                year.style.borderColor = "hsl(270, 3%, 87%)";
+                month.style.borderColor = validColor;
+                year.style.borderColor = validColor;
                 
             } else  if(!month.value.match(regExp) && !year.value.match(regExp)) {
                 emptyDate.innerHTML = "Wrong format,Numbers only";
-                month.style.borderColor = "red";
-                year.style.borderColor = "red";
+                month.style.borderColor = errorColor;
+                year.style.borderColor = errorColor;
 
             } else  if(!month.value.match(regExp)) {
                     emptyDate.innerHTML = "Wrong format,Numbers only";
-                    month.style.borderColor = "red";
-                    year.style.borderColor = "hsl(270, 3%, 87%)";
+                    month.style.borderColor = errorColor;
+                    year.style.borderColor = validColor;
 
             } else if(!year.value.match(regExp)) {
                 emptyDate.innerHTML = "Wrong format,Numbers only";
-                year.style.borderColor = "red";
-                month.style.borderColor = "hsl(270, 3%, 87%)";
+                year.style.borderColor = errorColor;
+                month.style.borderColor = validColor;
             }
                     
-                
 
         } else {
             emptyDate.innerHTML = "";
-            month.style.borderColor = "hsl(270, 3%, 87%)";
-            year.style.borderColor = "hsl(270, 3%, 87%)";
+            month.style.borderColor = validColor;
+            year.style.borderColor = validColor;
         }
 
-
-       
-       
-
-        
         if(cvc.value == ""){
             emptycvc.innerHTML = "Can't be blank";
-            cvc.style.borderColor = "red";
+            cvc.style.borderColor = errorColor;
+        }
+
+        if(!cvc.value.match(regExp)) {
+            emptycvc.innerHTML = wrongFormatMsg;
+            cvc.style.borderColor = errorColor;
+        }
+         else {
+            emptycvc.innerHTML = "";
+            cvc.style.borderColor = validColor;
         }
 
         if(cardName.value != "" && cardNumber.value != "" && month.value !="" && year.value != "" && cvc.value != "") 
-        { if(regExp.test(cardNumber.value) || regExp.test(year.value) || regExp.test(month.value) || regExp.test(cvc.value)) {
+        { if(!cardNumber.value.match(regExp) || !year.value.match(regExp) || !month.value.match(regExp) || !cvc.value.match(regExp)) {
             return;
             } else {
             confirmSuccess();}
         } else {
+            console.log("somethign wrong");
             return;
         }
 
@@ -157,14 +148,7 @@ cardNumber.addEventListener("keyup", function() {
     const updatePrevNum = cardNumPrevMatch.match(/.{1,4}/g);
     cardNumPreview.innerHTML = updatePrevNum.join(" ");
 
-    //trim / limit the inputs
-    if(cardNumber.value.length > 16) {
-        cardNumber.value = cardNumber.value.slice(0, 15)
-        // cardNumPrevMatch.slice(0,16);
-    }
-    
-    console.log(cardNumPrevMatch);
-})
+   })
 
 month.addEventListener("keyup", function() {
     monthPrev.innerHTML = month.value;
@@ -177,17 +161,6 @@ year.addEventListener("keyup", function() {
 
 cvc.addEventListener("keyup", function() {
     cvv.innerHTML = cvc.value;
-
-    
-     if(regExp.test(cvc.value)) {
-        emptycvc.innerHTML = "Wrong format, Numbers only";
-        cvc.style.borderColor = "red";
-    }
-     else {
-        emptycvc.innerHTML = "";
-        cvc.style.borderColor = "hsl(270, 3%, 87%)";
-        console.log("no error for cvc regex test");
-    }
 
 })
 
