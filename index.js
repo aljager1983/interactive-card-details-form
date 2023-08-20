@@ -109,9 +109,7 @@ confButton.addEventListener("click", function() {
         if(cvc.value == ""){
             emptycvc.innerHTML = "Can't be blank";
             cvc.style.borderColor = errorColor;
-        }
-
-        if(!cvc.value.match(regExp)) {
+        } else if(!cvc.value.match(regExp)) {
             emptycvc.innerHTML = wrongFormatMsg;
             cvc.style.borderColor = errorColor;
         }
